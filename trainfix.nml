@@ -1,0 +1,235 @@
+
+grf {
+	grfid:"BBTF";
+	name: string(NAME);
+	desc: string(DESC);
+	min_compatible_version: 1;
+	version: 1;
+	url: string(URL);
+}
+
+cargotable{
+	GOOD
+}
+
+
+engine_override(AI\00\06);
+
+item(FEAT_TRAINS, 27, 27) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 44, 44) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 45, 45) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 6, 6) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 49, 49) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 28, 28) {
+	property {
+		refittable_cargo_classes: bitmask(CC_MAIL);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 12, 12) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 47, 47) {
+	property {
+		cargo_allow_refit: [GOOD];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 48, 48) {
+	property {
+		cargo_allow_refit: [GOOD];
+		refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 10, 10) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 46, 46) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 57, 57) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 25, 25) {
+	property {
+		cargo_capacity: 0;
+	}
+}
+
+item(FEAT_TRAINS, 50, 50) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 29, 29) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 34, 34) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 33, 33) {
+	property {
+		cargo_allow_refit: [GOOD];
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+
+item(FEAT_TRAINS, 35, 35) {
+	property {
+		refittable_cargo_classes: bitmask(CC_BULK);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 36, 36) {
+	property {
+		refittable_cargo_classes: bitmask(CC_BULK);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 37, 37) {
+	property {
+		refittable_cargo_classes: bitmask(CC_BULK);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 62, 62) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 32, 32) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL, CC_ARMOURED);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 11, 11) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 51, 51) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 13, 13) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 52, 52) {
+	property {
+		cargo_allow_refit: [GOOD];
+		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 15, 15) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 14, 14) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 16, 16) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 20, 20) {
+	property {
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+	}
+}
+
+item(FEAT_TRAINS, 1, 1) {
+	property {
+		climates_available: NO_CLIMATE;
+	}
+}
