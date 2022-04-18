@@ -13,7 +13,7 @@ cargotable{
 }
 
 
-engine_override(AI/00/06);
+engine_override("AI\00\06");
 
 item(FEAT_TRAINS, a, 27) {
 	property {
