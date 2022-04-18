@@ -13,58 +13,58 @@ cargotable{
 }
 
 
-engine_override(AI\00\06);
+engine_override(AI/00/06);
 
-item(FEAT_TRAINS, 27, 27) {
+item(FEAT_TRAINS, a, 27) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 44, 44) {
+item(FEAT_TRAINS, b, 44) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 45, 45) {
+item(FEAT_TRAINS, c, 45) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 6, 6) {
+item(FEAT_TRAINS, d, 6) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 49, 49) {
+item(FEAT_TRAINS, e, 49) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 28, 28) {
+item(FEAT_TRAINS, f, 28) {
 	property {
 		refittable_cargo_classes: bitmask(CC_MAIL);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 12, 12) {
+item(FEAT_TRAINS, g, 12) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 47, 47) {
+item(FEAT_TRAINS, h, 47) {
 	property {
 		cargo_allow_refit: [GOOD];
 		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED);
@@ -72,7 +72,7 @@ item(FEAT_TRAINS, 47, 47) {
 	}
 }
 
-item(FEAT_TRAINS, 48, 48) {
+item(FEAT_TRAINS, i, 48) {
 	property {
 		cargo_allow_refit: [GOOD];
 		refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED);
@@ -80,55 +80,55 @@ item(FEAT_TRAINS, 48, 48) {
 	}
 }
 
-item(FEAT_TRAINS, 10, 10) {
+item(FEAT_TRAINS, j, 10) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 46, 46) {
+item(FEAT_TRAINS, k, 46) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 57, 57) {
+item(FEAT_TRAINS, l, 57) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 25, 25) {
+item(FEAT_TRAINS, m, 25) {
 	property {
 		cargo_capacity: 0;
 	}
 }
 
-item(FEAT_TRAINS, 50, 50) {
+item(FEAT_TRAINS, n, 50) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 29, 29) {
+item(FEAT_TRAINS, o, 29) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 34, 34) {
+item(FEAT_TRAINS, p, 34) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 33, 33) {
+item(FEAT_TRAINS, q, 33) {
 	property {
 		cargo_allow_refit: [GOOD];
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
@@ -136,63 +136,63 @@ item(FEAT_TRAINS, 33, 33) {
 }
 
 
-item(FEAT_TRAINS, 35, 35) {
+item(FEAT_TRAINS, r, 35) {
 	property {
 		refittable_cargo_classes: bitmask(CC_BULK);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 36, 36) {
+item(FEAT_TRAINS, t, 36) {
 	property {
 		refittable_cargo_classes: bitmask(CC_BULK);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 37, 37) {
+item(FEAT_TRAINS, s, 37) {
 	property {
 		refittable_cargo_classes: bitmask(CC_BULK);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 62, 62) {
+item(FEAT_TRAINS, u, 62) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 32, 32) {
+item(FEAT_TRAINS, w, 32) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL, CC_ARMOURED);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 11, 11) {
+item(FEAT_TRAINS, v, 11) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 51, 51) {
+item(FEAT_TRAINS, x, 51) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 13, 13) {
+item(FEAT_TRAINS, y, 13) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 52, 52) {
+item(FEAT_TRAINS, z, 52) {
 	property {
 		cargo_allow_refit: [GOOD];
 		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED);
@@ -200,35 +200,35 @@ item(FEAT_TRAINS, 52, 52) {
 	}
 }
 
-item(FEAT_TRAINS, 15, 15) {
+item(FEAT_TRAINS, aa, 15) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 14, 14) {
+item(FEAT_TRAINS, ab, 14) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 16, 16) {
+item(FEAT_TRAINS, ac, 16) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 20, 20) {
+item(FEAT_TRAINS, ad, 20) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, 1, 1) {
+item(FEAT_TRAINS, ae, 1) {
 	property {
 		climates_available: NO_CLIMATE;
 	}
