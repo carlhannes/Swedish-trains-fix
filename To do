@@ -1,7 +1,7 @@
 Add goods to goods wagons //express class  
 Make hoppers hoppers //exclude Not Pourable and Covered (add possible alternative)
-Add tanker //	Liquid class
+Add tanker (Q12) //	Liquid class
 Add cemment wagon (Q14u) // Powderized
-Add open wagon // bulk
-Add covered hopper // bulk covered 
+Add open wagon (Ia, Ibr) // bulk
+Add covered hopper (Kö) // bulk covered 
 fix iore seams possable 
