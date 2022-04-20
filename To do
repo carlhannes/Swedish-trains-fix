@@ -1,2 +1,3 @@
 Add goods to goods wagons //express class  
-Make hoppers hoppers //exclude Not Pourable and Covered (add possible alternative) and maybe piece goods 
+Make hoppers hoppers //exclude Not Pourable and Covered (add possible alternative)
+Add tanker //	Liquid class
