@@ -163,14 +163,14 @@ item(FEAT_TRAINS, s, 37) {
 
 item(FEAT_TRAINS, u, 62) {
 	property {
-		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL);
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL, CC_EXPRESS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
 item(FEAT_TRAINS, w, 32) {
 	property {
-		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL, CC_ARMOURED);
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL, CC_ARMOURED, CC_EXPRESS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
