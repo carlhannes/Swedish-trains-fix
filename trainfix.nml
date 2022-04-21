@@ -265,7 +265,7 @@ switch(FEAT_TRAINS, SELF, sw_iore_flip_check2, 0/*vehicle_is_flipped*/) {
 	return spriteset_iore_front;
 }
 
-switch(FEAT_TRAINS, SELF, sw_iore_graphics, (position_in_consist % 2)) {
+switch(FEAT_TRAINS, SELF, sw_iore_graphics, (position_in_articulated_veh % 2)) {
 	0: return sw_iore_flip_check1;
 	return sw_iore_flip_check2;
 }
