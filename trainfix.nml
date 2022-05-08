@@ -13,6 +13,7 @@ cargotable{
 }
 
 
+
 engine_override("AI\00\06");
 
 if (grf_order_behind("AI\00\06") == 0) {
@@ -32,6 +33,52 @@ item(FEAT_TRAINS, b, 44) {
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
+
+spriteset (ss_afm7) {
+	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
+}
+
+
+/*
+switch (FEAT_TRAINS, SELF, sw_subtype_afm7, cargo_subtype) {
+	0: return string(NAME);
+	1: return string(DESC);
+	return CB_RESULT_NO_TEXT;
+}
+
+switch (FEAT_TRAINS, SELF, sw_colour_afm7, cargo_subtype) {
+	1: return palette_2cc(COLOUR_DARK_BLUE, COLOUR_GREY);
+	2: return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
+}
+
+
+item(FEAT_TRAINS, afm7, 1000) {
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		cargo_capacity: 100;
+		introduction_date: date(1900, 01, 01); 
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		misc_flags: bitmask(TRAIN_FLAG_2CC);
+		power: 10000;
+		weight: 100;
+	}
+	graphics{
+		default: ss_afm7;
+		colour_mapping: sw_colour_afm7;
+		cargo_subtype_text: sw_subtype_afm7;
+	}
+}
+*/
+
 
 item(FEAT_TRAINS, c, 45) {
 	property {
@@ -273,7 +320,7 @@ switch(FEAT_TRAINS, SELF, sw_iore_graphics, (position_in_articulated_veh % 2)) {
 switch(FEAT_TRAINS, SELF, sw_iore_articulated_part, extra_callback_info1) {
     1: return 19;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
+} 
 
 item(FEAT_TRAINS, iore, 19) {
 	property {
