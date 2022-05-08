@@ -4,7 +4,7 @@ grf {
 	name: string(NAME);
 	desc: string(DESC);
 	min_compatible_version: 1;
-	version: 1;
+	version: 2;
 	url: string(URL);
 }
 
@@ -13,7 +13,12 @@ cargotable{
 }
 
 
-engine_override(AI/00/06);
+
+engine_override("AI\00\06");
+
+if (grf_order_behind("AI\00\06") == 0) {
+	error(FATAL, MUST_LOAD_AFTER, "Swedish trainsby AI");
+}
 
 item(FEAT_TRAINS, a, 27) {
 	property {
@@ -28,6 +33,52 @@ item(FEAT_TRAINS, b, 44) {
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
+
+spriteset (ss_afm7) {
+	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
+	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
+}
+
+
+/*
+switch (FEAT_TRAINS, SELF, sw_subtype_afm7, cargo_subtype) {
+	0: return string(NAME);
+	1: return string(DESC);
+	return CB_RESULT_NO_TEXT;
+}
+
+switch (FEAT_TRAINS, SELF, sw_colour_afm7, cargo_subtype) {
+	1: return palette_2cc(COLOUR_DARK_BLUE, COLOUR_GREY);
+	2: return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
+}
+
+
+item(FEAT_TRAINS, afm7, 1000) {
+	property {
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+		climates_available: ALL_CLIMATES;
+		cargo_capacity: 100;
+		introduction_date: date(1900, 01, 01); 
+		refittable_cargo_classes: bitmask(CC_PASSENGERS);
+		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		misc_flags: bitmask(TRAIN_FLAG_2CC);
+		power: 10000;
+		weight: 100;
+	}
+	graphics{
+		default: ss_afm7;
+		colour_mapping: sw_colour_afm7;
+		cargo_subtype_text: sw_subtype_afm7;
+	}
+}
+*/
+
 
 item(FEAT_TRAINS, c, 45) {
 	property {
@@ -159,14 +210,14 @@ item(FEAT_TRAINS, s, 37) {
 
 item(FEAT_TRAINS, u, 62) {
 	property {
-		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL);
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL, CC_EXPRESS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
 item(FEAT_TRAINS, w, 32) {
 	property {
-		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL, CC_ARMOURED);
+		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL, CC_ARMOURED, CC_EXPRESS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
@@ -231,5 +282,53 @@ item(FEAT_TRAINS, ad, 20) {
 item(FEAT_TRAINS, ae, 1) {
 	property {
 		climates_available: NO_CLIMATE;
+	}
+}
+
+//iore
+
+template iore_templ(a, b, c, d, e, f, g, h) {
+	[0, 0, 8,  22,  -3, -11 ,a]
+	[0, 0, 21, 17, -14, -11 ,b]
+	[0, 0, 32, 15, -16, -11 ,c]
+	[0, 0, 21, 17, -14, -11 ,d]
+	[0, 0, 8,  22,  -3, -11 ,e]
+	[0, 0, 21, 17, -14, -11 ,f]
+	[0, 0, 32, 15, -16, -11 ,g]
+	[0, 0, 21, 17, -14, -11 ,h]
+}
+
+spriteset (spriteset_iore_front) {iore_templ("gfx/sprite1597.png", "gfx/sprite1598.png", "gfx/sprite1599.png", "gfx/sprite1600.png", "gfx/sprite1601.png", "gfx/sprite1602.png", "gfx/sprite1603.png", "gfx/sprite1604.png")}
+
+spriteset (spriteset_iore_back) {iore_templ("gfx/sprite1611.png", "gfx/sprite1612.png", "gfx/sprite1613.png", "gfx/sprite1614.png", "gfx/sprite1607.png", "gfx/sprite1608.png", "gfx/sprite1609.png", "gfx/sprite1610.png")}
+
+switch(FEAT_TRAINS, SELF, sw_iore_flip_check1, 0/*vehicle_is_flipped*/) {
+	1: return spriteset_iore_back;
+	return spriteset_iore_front;
+}
+
+switch(FEAT_TRAINS, SELF, sw_iore_flip_check2, 0/*vehicle_is_flipped*/) {
+	0: return spriteset_iore_back;
+	return spriteset_iore_front;
+}
+
+switch(FEAT_TRAINS, SELF, sw_iore_graphics, (position_in_articulated_veh % 2)) {
+	0: return sw_iore_flip_check1;
+	return sw_iore_flip_check2;
+}
+
+switch(FEAT_TRAINS, SELF, sw_iore_articulated_part, extra_callback_info1) {
+    1: return 19;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+} 
+
+item(FEAT_TRAINS, iore, 19) {
+	property {
+		dual_headed: 0; 
+		sprite_id: SPRITE_ID_NEW_TRAIN;
+	}
+	graphics {
+		articulated_part: sw_iore_articulated_part; 
+		default: sw_iore_graphics;
 	}
 }
