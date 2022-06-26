@@ -3,3 +3,4 @@ Add tanker (Q12) //	Liquid class
 Add cemment wagon (Q14u) // Powderized
 Add open wagon (Ia, Ibr) // bulk
 Add covered hopper (Kö) // bulk covered 
+fix iore for real(bug)
