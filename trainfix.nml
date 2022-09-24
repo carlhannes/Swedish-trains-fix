@@ -4,15 +4,20 @@ grf {
 	name: string(NAME);
 	desc: string(DESC);
 	min_compatible_version: 1;
-	version: 2;
+	version: 3;
 	url: string(URL);
 }
+
+traininfo_y_offset = 2;
+traininfo_y_offset = 1;
 
 cargotable{
 	GOOD
 }
 
-
+railtypetable{
+	ELRL
+}
 
 engine_override("AI\00\06");
 
@@ -287,34 +292,31 @@ item(FEAT_TRAINS, ae, 1) {
 
 //iore
 
-template iore_templ(a, b, c, d, e, f, g, h) {
-	[0, 0, 8,  22,  -3, -11 ,a]
-	[0, 0, 21, 17, -14, -11 ,b]
-	[0, 0, 32, 15, -16, -11 ,c]
-	[0, 0, 21, 17, -14, -11 ,d]
-	[0, 0, 8,  22,  -3, -11 ,e]
-	[0, 0, 21, 17, -14, -11 ,f]
-	[0, 0, 32, 15, -16, -11 ,g]
-	[0, 0, 21, 17, -14, -11 ,h]
+spriteset (spriteset_iore_front) {
+	[0, 0, 8,  22,  -3, -11 ,"gfx/sprite1597.png"]
+	[0, 0, 21, 17, -14, -10 ,"gfx/sprite1598.png"]
+	[0, 0, 32, 15, -16, -11 ,"gfx/sprite1599.png"]
+	[0, 0, 21, 17,  -6, -11 ,"gfx/sprite1600.png"]
+	[0, 0, 8,  22,  -3, -11 ,"gfx/sprite1601.png"]
+	[0, 0, 21, 17, -14, -11 ,"gfx/sprite1602.png"]
+	[0, 0, 32, 15, -16, -11 ,"gfx/sprite1603.png"]
+	[0, 0, 21, 17,  -6, -10 ,"gfx/sprite1604.png"]
 }
 
-spriteset (spriteset_iore_front) {iore_templ("gfx/sprite1597.png", "gfx/sprite1598.png", "gfx/sprite1599.png", "gfx/sprite1600.png", "gfx/sprite1601.png", "gfx/sprite1602.png", "gfx/sprite1603.png", "gfx/sprite1604.png")}
-
-spriteset (spriteset_iore_back) {iore_templ("gfx/sprite1611.png", "gfx/sprite1612.png", "gfx/sprite1613.png", "gfx/sprite1614.png", "gfx/sprite1607.png", "gfx/sprite1608.png", "gfx/sprite1609.png", "gfx/sprite1610.png")}
-
-switch(FEAT_TRAINS, SELF, sw_iore_flip_check1, 0/*vehicle_is_flipped*/) {
-	1: return spriteset_iore_back;
-	return spriteset_iore_front;
-}
-
-switch(FEAT_TRAINS, SELF, sw_iore_flip_check2, 0/*vehicle_is_flipped*/) {
-	0: return spriteset_iore_back;
-	return spriteset_iore_front;
+spriteset (spriteset_iore_back) {
+	[0, 0, 8,  22,  -3, -11 ,"gfx/sprite1611.png"]
+	[0, 0, 21, 17, -14, -10 ,"gfx/sprite1612.png"]
+	[0, 0, 32, 15, -16, -11 ,"gfx/sprite1613.png"]
+	[0, 0, 21, 17,  -6, -11 ,"gfx/sprite1614.png"]
+	[0, 0, 8,  22,  -3, -11 ,"gfx/sprite1607.png"]
+	[0, 0, 21, 17, -14, -11 ,"gfx/sprite1608.png"]
+	[0, 0, 32, 15, -16, -11 ,"gfx/sprite1609.png"]
+	[0, 0, 21, 17,  -6, -10 ,"gfx/sprite1610.png"]
 }
 
 switch(FEAT_TRAINS, SELF, sw_iore_graphics, (position_in_articulated_veh % 2)) {
-	0: return sw_iore_flip_check1;
-	return sw_iore_flip_check2;
+	0: return spriteset_iore_front;
+	return spriteset_iore_back;
 }
 
 switch(FEAT_TRAINS, SELF, sw_iore_articulated_part, extra_callback_info1) {
@@ -322,9 +324,11 @@ switch(FEAT_TRAINS, SELF, sw_iore_articulated_part, extra_callback_info1) {
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 } 
 
+
+
 item(FEAT_TRAINS, iore, 19) {
 	property {
-		dual_headed: 0; 
+		dual_headed: 0;  
 		sprite_id: SPRITE_ID_NEW_TRAIN;
 	}
 	graphics {
