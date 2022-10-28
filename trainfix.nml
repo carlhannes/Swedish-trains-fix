@@ -4,7 +4,7 @@ grf {
 	name: string(NAME);
 	desc: string(DESC);
 	min_compatible_version: 1;
-	version: 3;
+	version: 4;
 	url: string(URL);
 }
 
@@ -22,7 +22,7 @@ railtypetable{
 engine_override("AI\00\06");
 
 if (grf_order_behind("AI\00\06") == 0) {
-	error(FATAL, MUST_LOAD_AFTER, "Swedish trainsby AI");
+	error(FATAL, MUST_LOAD_AFTER, "Swedish trains by AI");
 }
 
 item(FEAT_TRAINS, a, 27) {
@@ -284,7 +284,7 @@ item(FEAT_TRAINS, ad, 20) {
 	}
 }
 
-item(FEAT_TRAINS, ae, 1) {
+item(FEAT_ROADVEHS, ae, 1) {
 	property {
 		climates_available: NO_CLIMATE;
 	}
