@@ -9,7 +9,7 @@ grf {
 }
 
 traininfo_y_offset = 2;
-traininfo_y_offset = 1;
+train_width_32_px = 1;
 
 cargotable{
 	GOOD
@@ -25,102 +25,56 @@ if (grf_order_behind("AI\00\06") == 0) {
 	error(FATAL, MUST_LOAD_AFTER, "Swedish trains by AI");
 }
 
-item(FEAT_TRAINS, a, 27) {
+item(FEAT_TRAINS, B8, 27) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, b, 44) {
+item(FEAT_TRAINS, A4, 44) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-spriteset (ss_afm7) {
-	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
-	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
-	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
-	[0, 0, 32, 12, -14, -8, "AFM7/afm73.png"]
-	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
-	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
-	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
-	[0, 0, 32, 12, -14, -8, "AFM7/afm77.png"]
-}
-
-
-/*
-switch (FEAT_TRAINS, SELF, sw_subtype_afm7, cargo_subtype) {
-	0: return string(NAME);
-	1: return string(DESC);
-	return CB_RESULT_NO_TEXT;
-}
-
-switch (FEAT_TRAINS, SELF, sw_colour_afm7, cargo_subtype) {
-	1: return palette_2cc(COLOUR_DARK_BLUE, COLOUR_GREY);
-	2: return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
-}
-
-
-item(FEAT_TRAINS, afm7, 1000) {
-	property {
-		sprite_id: SPRITE_ID_NEW_TRAIN;
-		climates_available: ALL_CLIMATES;
-		cargo_capacity: 100;
-		introduction_date: date(1900, 01, 01); 
-		refittable_cargo_classes: bitmask(CC_PASSENGERS);
-		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
-		misc_flags: bitmask(TRAIN_FLAG_2CC);
-		power: 10000;
-		weight: 100;
-	}
-	graphics{
-		default: ss_afm7;
-		colour_mapping: sw_colour_afm7;
-		cargo_subtype_text: sw_subtype_afm7;
-	}
-}
-*/
-
-
-item(FEAT_TRAINS, c, 45) {
+item(FEAT_TRAINS, B6, 45) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, d, 6) {
+item(FEAT_TRAINS, X9, 6) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, e, 49) {
+item(FEAT_TRAINS, UB9, 49) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, f, 28) {
+item(FEAT_TRAINS, Dbk, 28) {
 	property {
 		refittable_cargo_classes: bitmask(CC_MAIL);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, g, 12) {
+item(FEAT_TRAINS, Y6, 12) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, h, 47) {
+item(FEAT_TRAINS, UBF7Z, 47) {
 	property {
 		cargo_allow_refit: [GOOD];
 		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED);
@@ -128,7 +82,7 @@ item(FEAT_TRAINS, h, 47) {
 	}
 }
 
-item(FEAT_TRAINS, i, 48) {
+item(FEAT_TRAINS, UFV, 48) {
 	property {
 		cargo_allow_refit: [GOOD];
 		refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED);
@@ -136,55 +90,55 @@ item(FEAT_TRAINS, i, 48) {
 	}
 }
 
-item(FEAT_TRAINS, j, 10) {
+item(FEAT_TRAINS, X7, 10) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, k, 46) {
+item(FEAT_TRAINS, UBX7, 46) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, l, 57) {
+item(FEAT_TRAINS, C3d, 57) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, m, 25) {
+item(FEAT_TRAINS, X2, 25) {
 	property {
 		cargo_capacity: 0;
 	}
 }
 
-item(FEAT_TRAINS, n, 50) {
+item(FEAT_TRAINS, UB2, 50) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, o, 29) {
+item(FEAT_TRAINS, Om, 29) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, p, 34) {
+item(FEAT_TRAINS, Os, 34) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, q, 33) {
+item(FEAT_TRAINS, Osc, 33) {
 	property {
 		cargo_allow_refit: [GOOD];
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
@@ -192,63 +146,63 @@ item(FEAT_TRAINS, q, 33) {
 }
 
 
-item(FEAT_TRAINS, r, 35) {
+item(FEAT_TRAINS, Mas, 35) {
 	property {
 		refittable_cargo_classes: bitmask(CC_BULK);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, t, 36) {
+item(FEAT_TRAINS, MasII, 36) {
 	property {
 		refittable_cargo_classes: bitmask(CC_BULK);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, s, 37) {
+item(FEAT_TRAINS, Uad, 37) {
 	property {
 		refittable_cargo_classes: bitmask(CC_BULK);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, u, 62) {
+item(FEAT_TRAINS, Gsh, 62) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL, CC_EXPRESS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, w, 32) {
+item(FEAT_TRAINS, Gbs, 32) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PIECE_GOODS, CC_MAIL, CC_ARMOURED, CC_EXPRESS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, v, 11) {
+item(FEAT_TRAINS, Y3, 11) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, x, 51) {
+item(FEAT_TRAINS, UBY3, 51) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, y, 13) {
+item(FEAT_TRAINS, Yo1, 13) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, z, 52) {
+item(FEAT_TRAINS, UDFo1t, 52) {
 	property {
 		cargo_allow_refit: [GOOD];
 		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED);
@@ -256,35 +210,36 @@ item(FEAT_TRAINS, z, 52) {
 	}
 }
 
-item(FEAT_TRAINS, aa, 15) {
+item(FEAT_TRAINS, X40, 15) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, ab, 14) {
+item(FEAT_TRAINS, Y1, 14) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, ac, 16) {
+item(FEAT_TRAINS, X3, 16) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_TRAINS, ad, 20) {
+item(FEAT_TRAINS, X50, 20) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 	}
 }
 
-item(FEAT_ROADVEHS, ae, 1) {
+// removes the bus
+item(FEAT_ROADVEHS, bus, 1) {
 	property {
 		climates_available: NO_CLIMATE;
 	}
@@ -293,25 +248,36 @@ item(FEAT_ROADVEHS, ae, 1) {
 //iore
 
 spriteset (spriteset_iore_front) {
-	[0, 0, 8,  22,  -3, -11 ,"gfx/sprite1597.png"]
-	[0, 0, 21, 17, -14, -10 ,"gfx/sprite1598.png"]
-	[0, 0, 32, 15, -16, -11 ,"gfx/sprite1599.png"]
-	[0, 0, 21, 17,  -6, -11 ,"gfx/sprite1600.png"]
-	[0, 0, 8,  22,  -3, -11 ,"gfx/sprite1601.png"]
-	[0, 0, 21, 17, -14, -11 ,"gfx/sprite1602.png"]
-	[0, 0, 32, 15, -16, -11 ,"gfx/sprite1603.png"]
-	[0, 0, 21, 17,  -6, -10 ,"gfx/sprite1604.png"]
+	[0, 0, 8,  22,  -3, -11, "gfx/sprite1597.png"]
+	[0, 0, 21, 17, -14, -10, "gfx/sprite1598.png"]
+	[0, 0, 32, 15, -16, -11, "gfx/sprite1599.png"]
+	[0, 0, 21, 17,  -6, -11, "gfx/sprite1600.png"]
+	[0, 0, 8,  22,  -3, -11, "gfx/sprite1601.png"]
+	[0, 0, 21, 17, -14, -11, "gfx/sprite1602.png"]
+	[0, 0, 32, 15, -16, -11, "gfx/sprite1603.png"]
+	[0, 0, 21, 17,  -6, -10, "gfx/sprite1604.png"]
 }
 
 spriteset (spriteset_iore_back) {
-	[0, 0, 8,  22,  -3, -11 ,"gfx/sprite1611.png"]
-	[0, 0, 21, 17, -14, -10 ,"gfx/sprite1612.png"]
-	[0, 0, 32, 15, -16, -11 ,"gfx/sprite1613.png"]
-	[0, 0, 21, 17,  -6, -11 ,"gfx/sprite1614.png"]
-	[0, 0, 8,  22,  -3, -11 ,"gfx/sprite1607.png"]
-	[0, 0, 21, 17, -14, -11 ,"gfx/sprite1608.png"]
-	[0, 0, 32, 15, -16, -11 ,"gfx/sprite1609.png"]
-	[0, 0, 21, 17,  -6, -10 ,"gfx/sprite1610.png"]
+	[0, 0, 8,  22,  -3, -11, "gfx/sprite1611.png"]
+	[0, 0, 21, 17, -14, -10, "gfx/sprite1612.png"]
+	[0, 0, 32, 15, -16, -11, "gfx/sprite1613.png"]
+	[0, 0, 21, 17,  -6, -11, "gfx/sprite1614.png"]
+	[0, 0, 8,  22,  -3, -11, "gfx/sprite1607.png"]
+	[0, 0, 21, 17, -14, -11, "gfx/sprite1608.png"]
+	[0, 0, 32, 15, -16, -11, "gfx/sprite1609.png"]
+	[0, 0, 21, 17,  -6, -10, "gfx/sprite1610.png"]
+}
+
+spriteset (spriteset_iore_purchase) {
+	[]
+	[]
+	[]
+	[]
+	[]
+	[]
+	[0, 0, 55, 15, -27, -11, "gfx/sprite1623.png"]
+	[]
 }
 
 switch(FEAT_TRAINS, SELF, sw_iore_graphics, (position_in_articulated_veh % 2)) {
@@ -334,5 +300,6 @@ item(FEAT_TRAINS, iore, 19) {
 	graphics {
 		articulated_part: sw_iore_articulated_part; 
 		default: sw_iore_graphics;
+		purchase: spriteset_iore_purchase;
 	}
 }
