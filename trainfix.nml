@@ -4,7 +4,7 @@ grf {
 	name: string(NAME);
 	desc: string(DESC);
 	min_compatible_version: 1;
-	version: 4;
+	version: 5;
 	url: string(URL);
 }
 
