@@ -2,3 +2,5 @@
 NAME :Swedish trains fix
 DESC :Makes swedish trains work with new industry sets!{}Needs to be placed below swedish trains.{}Uses iore sprites from swedish trains made by Anders.{COPYRIGHT}2023 {}licence: GPLv2
 URL :https://github.com/Brickblock1/Swedish-trains-fix
+DISABLE_X2_NAME :Disable the X2000?
+DISABLE_X2_DESC :Disables the X2000 useful if you use another set which also provides it.

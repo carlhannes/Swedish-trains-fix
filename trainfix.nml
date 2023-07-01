@@ -4,8 +4,15 @@ grf {
 	name: string(NAME);
 	desc: string(DESC);
 	min_compatible_version: 1;
-	version: 5;
+	version: 6;
 	url: string(URL);
+	param {
+		disable_x2{
+			type: bool;
+			name: string(DISABLE_X2_NAME);
+			desc: string(DISABLE_X2_DESC);
+		}
+	}
 }
 
 traininfo_y_offset = 2;
@@ -16,13 +23,98 @@ cargotable{
 }
 
 railtypetable{
-	ELRL
+	_15KV: [SAAa, SAAA, SAAE, ELRL], 
+	_X5KV: [NORD, SAAA, SAAE, ELRL], 
 }
 
 engine_override("AI\00\06");
 
 if (grf_order_behind("AI\00\06") == 0) {
 	error(FATAL, MUST_LOAD_AFTER, "Swedish trains by AI");
+}
+
+item(FEAT_TRAINS, Ds, 0) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, F, 1) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, Da, 2) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, Ra, 3) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, Ra, 3) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, Rc1, 5) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, Rc6, 23) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, Rc4, 7) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, Rc7, 24) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, Dm3, 17) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, Dm3m, 80) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, DM2b, 81) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, Dm, 18) {
+	property {
+		track_type: _15KV;
+	}
+}
+
+item(FEAT_TRAINS, HR141, 21) {
+	property {
+		track_type: _15KV;
+	}
 }
 
 item(FEAT_TRAINS, B8, 27) {
@@ -50,6 +142,8 @@ item(FEAT_TRAINS, X9, 6) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 24;
+		track_type: _15KV;
 	}
 }
 
@@ -57,6 +151,7 @@ item(FEAT_TRAINS, UB9, 49) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 54;
 	}
 }
 
@@ -71,6 +166,7 @@ item(FEAT_TRAINS, Y6, 12) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 53;
 	}
 }
 
@@ -79,6 +175,7 @@ item(FEAT_TRAINS, UBF7Z, 47) {
 		cargo_allow_refit: [GOOD];
 		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 28;
 	}
 }
 
@@ -94,6 +191,7 @@ item(FEAT_TRAINS, X7, 10) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		track_type: _15KV;
 	}
 }
 
@@ -114,6 +212,7 @@ item(FEAT_TRAINS, C3d, 57) {
 item(FEAT_TRAINS, X2, 25) {
 	property {
 		cargo_capacity: 0;
+		track_type: _X5KV;
 	}
 }
 
@@ -121,6 +220,20 @@ item(FEAT_TRAINS, UB2, 50) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 72;
+	}
+}
+
+if(disable_x2 == 1) {
+	item(FEAT_TRAINS, X2, 25) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	}
+	item(FEAT_TRAINS, UB2, 50) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
 	}
 }
 
@@ -185,6 +298,7 @@ item(FEAT_TRAINS, Y3, 11) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 96;
 	}
 }
 
@@ -192,6 +306,7 @@ item(FEAT_TRAINS, UBY3, 51) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 56;
 	}
 }
 
@@ -199,14 +314,16 @@ item(FEAT_TRAINS, Yo1, 13) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 46;
 	}
 }
 
 item(FEAT_TRAINS, UDFo1t, 52) {
 	property {
 		cargo_allow_refit: [GOOD];
-		refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED);
+		refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 54;
 	}
 }
 
@@ -214,6 +331,8 @@ item(FEAT_TRAINS, X40, 15) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 74;
+		track_type: _15KV;
 	}
 }
 
@@ -221,6 +340,7 @@ item(FEAT_TRAINS, Y1, 14) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 68;
 	}
 }
 
@@ -228,6 +348,8 @@ item(FEAT_TRAINS, X3, 16) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 57;
+		track_type: _15KV;
 	}
 }
 
@@ -235,6 +357,8 @@ item(FEAT_TRAINS, X50, 20) {
 	property {
 		refittable_cargo_classes: bitmask(CC_PASSENGERS);
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 83;
+		track_type: _15KV;
 	}
 }
 
@@ -296,6 +420,7 @@ item(FEAT_TRAINS, iore, 19) {
 	property {
 		dual_headed: 0;  
 		sprite_id: SPRITE_ID_NEW_TRAIN;
+		track_type: _15KV;
 	}
 	graphics {
 		articulated_part: sw_iore_articulated_part; 
