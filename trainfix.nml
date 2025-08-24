@@ -1,10 +1,10 @@
 
 grf {
-	grfid:"BBTF";
+	grfid: "CHTF";
 	name: string(NAME);
 	desc: string(DESC);
 	min_compatible_version: 1;
-	version: 6;
+	version: 7;
 	url: string(URL);
 	param {
 		disable_x2{
@@ -18,7 +18,7 @@ grf {
 traininfo_y_offset = 2;
 train_width_32_px = 1;
 
-cargotable{
+cargotable {
 	GOOD
 }
 
@@ -57,12 +57,6 @@ item(FEAT_TRAINS, Ra, 3) {
 	}
 }
 
-item(FEAT_TRAINS, Ra, 3) {
-	property {
-		track_type: _15KV;
-	}
-}
-
 item(FEAT_TRAINS, Rc1, 5) {
 	property {
 		track_type: _15KV;
@@ -72,6 +66,7 @@ item(FEAT_TRAINS, Rc1, 5) {
 item(FEAT_TRAINS, Rc6, 23) {
 	property {
 		track_type: _15KV;
+		model_life: VEHICLE_NEVER_EXPIRES;
 	}
 }
 
@@ -84,6 +79,7 @@ item(FEAT_TRAINS, Rc4, 7) {
 item(FEAT_TRAINS, Rc7, 24) {
 	property {
 		track_type: _15KV;
+		model_life: VEHICLE_NEVER_EXPIRES;
 	}
 }
 
@@ -114,6 +110,7 @@ item(FEAT_TRAINS, Dm, 18) {
 item(FEAT_TRAINS, HR141, 21) {
 	property {
 		track_type: _15KV;
+		model_life: VEHICLE_NEVER_EXPIRES;
 	}
 }
 
@@ -211,16 +208,22 @@ item(FEAT_TRAINS, C3d, 57) {
 
 item(FEAT_TRAINS, X2, 25) {
 	property {
-		cargo_capacity: 0;
-		track_type: _X5KV;
+		cargo_capacity:       0;
+		track_type: 		  _X5KV;
+		model_life: 		  VEHICLE_NEVER_EXPIRES;
+		introduction_date:    date(1986, 1, 1);
 	}
 }
 
 item(FEAT_TRAINS, UB2, 50) {
 	property {
-		refittable_cargo_classes: bitmask(CC_PASSENGERS);
-		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
-		cargo_capacity: 72;
+		refittable_cargo_classes: 	bitmask(CC_PASSENGERS);
+		default_cargo_type: 		DEFAULT_CARGO_FIRST_REFITTABLE;
+		cargo_capacity: 			72;
+		model_life: 				VEHICLE_NEVER_EXPIRES;
+		speed:                		276 km/h;
+		misc_flags: 				bitmask(TRAIN_FLAG_TILT, TRAIN_FLAG_MU);
+		introduction_date:          date(1986, 1, 1);
 	}
 }
 
@@ -333,6 +336,7 @@ item(FEAT_TRAINS, X40, 15) {
 		default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 		cargo_capacity: 74;
 		track_type: _15KV;
+		model_life: VEHICLE_NEVER_EXPIRES;
 	}
 }
 
@@ -427,4 +431,96 @@ item(FEAT_TRAINS, iore, 19) {
 		default: sw_iore_graphics;
 		purchase: spriteset_iore_purchase;
 	}
+}
+
+/* ---------- graphics ---------------------------------------------- */
+/* X2 sprites: NFO lines 418-425 (8 views)                            */
+spriteset(spr_x2_2005, "gfx/AI_Swedish00.png") {
+    [626, 440,   8, 19,  -3, -12]  // SE front
+    [642, 440,  19, 15, -12,  -9]
+    [674, 440,  27, 15, -12, -11]
+    [706, 440,  19, 18,  -4, -12]
+    [738, 440,   8, 20,  -3, -12]  // NE rear
+    [754, 440,  19, 18, -14, -11]
+    [  2, 472,  27, 15, -14, -11]
+    [ 34, 472,  19, 15,  -6, -10]
+}
+
+spriteset(spr_x2_2005_purchase, "gfx/AI_Swedish00.png") { [] [] [] [] [] []
+    [626, 440, 55, 15, -27, -11]  // preview
+    []
+}
+
+/* ---------- new x2 2005 ---------------------------------------- */
+item(FEAT_TRAINS, X2_2005, 0x91) {
+    property {
+        name:                 string(STR_X2_2005_NAME, 0);
+        climates_available:   ALL_CLIMATES;
+        introduction_date:    date(2005, 1, 1);
+		model_life: 		  50;
+        vehicle_life:         25;
+        reliability_decay:    18;
+
+        /* performance */
+        power:                3817 kW;      // 5120 hp, +10 %
+        speed:                242 km/h;     // 220 km/h + 10 %
+        weight:               80;         	// 73 t + 10 %
+		tractive_effort_coefficient: 0.34;
+        air_drag_coefficient:  0;           // use default for this speed
+
+        /* economy */
+        cost_factor:          130;          // +30 % over base
+		running_cost_base:    RUNNING_COST_ELECTRIC;
+        running_cost_factor:  175;
+
+        /* classification */
+        engine_class:         ENGINE_CLASS_ELECTRIC;
+        sprite_id:            SPRITE_ID_NEW_TRAIN;
+        track_type:           _X5KV;
+
+        /* bells & whistles */
+        misc_flags: bitmask(TRAIN_FLAG_TILT, TRAIN_FLAG_MU);
+    }
+
+    graphics {
+        default:  spr_x2_2005;
+        purchase: spr_x2_2005_purchase;
+    }
+}
+
+/* ---------- new x2c ---------------------------------------- */
+item(FEAT_TRAINS, X2C, 0x92) {
+    property {
+        name:                 string(STR_X2C_NAME, 0);
+        climates_available:   ALL_CLIMATES;
+        introduction_date:    date(2019, 1, 1);
+		model_life:           VEHICLE_NEVER_EXPIRES;
+        vehicle_life:         25;
+        reliability_decay:    18;
+
+        /* performance */
+        power:                7634 kW;
+        speed:                276 km/h;    
+        weight:               80;
+		tractive_effort_coefficient: 0.64;
+        air_drag_coefficient:  0;
+
+        /* economy */
+        cost_factor:          150;
+		running_cost_base:    RUNNING_COST_ELECTRIC;
+        running_cost_factor:  200;
+
+        /* classification */
+        engine_class:         ENGINE_CLASS_ELECTRIC;
+        sprite_id:            SPRITE_ID_NEW_TRAIN;
+        track_type:           _X5KV;
+
+        /* bells & whistles */
+        misc_flags: bitmask(TRAIN_FLAG_TILT, TRAIN_FLAG_MU);
+    }
+
+    graphics {
+        default:  spr_x2_2005;
+        purchase: spr_x2_2005_purchase;
+    }
 }
