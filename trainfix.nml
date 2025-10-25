@@ -19,7 +19,9 @@ traininfo_y_offset = 2;
 train_width_32_px = 1;
 
 cargotable {
-	GOOD
+	GOOD,
+	MAIL,
+	VALU
 }
 
 railtypetable {
@@ -445,12 +447,12 @@ spriteset(spr_x2_og, "gfx/AI_Swedish00.png") {
 }
 
 spriteset(spr_x2_og_purchase, "gfx/AI_Swedish00.png") { [] [] [] [] [] []
-    [674, 440, 27, 15, -14, -11]   // diagonal for shop icon
+    [  2, 472, 27, 15, -14, -11]
     []
 }
 
 /* ---------- UB2/UB2X ---------- */
-/* plain trailer ub2 – NFO lines 432-439 */
+/* plain trailer ub2 */
 spriteset(spr_ub2_og, "gfx/AI_Swedish00.png") {
     [162,472,  8,21, -3,-12]  [178,472,21,17,-14,-10]
     [210,472,32,12,-15, -8]  [258,472,21,17, -6,-11]
@@ -458,7 +460,7 @@ spriteset(spr_ub2_og, "gfx/AI_Swedish00.png") {
     [338,472,32,12,-16, -8]  [386,472,21,17, -6,-11]
 }
 
-/* cab-trailer ub2x – NFO lines 442-449 */
+/* cab-trailer ub2x */
 spriteset(spr_ub2x_og, "gfx/AI_Swedish00.png") {
     [450,472,  8,20, -3,-12]  [466,472,21,17,-14,-10]
     [498,472,31,12,-14, -8]  [546,472,21,16, -6,-10]
@@ -466,9 +468,9 @@ spriteset(spr_ub2x_og, "gfx/AI_Swedish00.png") {
     [626,472,31,12,-16, -8]  [674,472,21,17, -6,-11]
 }
 
-/* purchase icon – any frame is fine */
+/* purchase icon */
 spriteset(spr_ub2_purchase, "gfx/AI_Swedish00.png") { [] [] [] [] [] []
-    [498,472,31,12,-14,-8]
+    [626,472,31,12,-16, -8]
     []
 }
 
@@ -555,25 +557,28 @@ item(FEAT_TRAINS, UB2_G2, 0x92) {
 
 /* -------------------------------------------------------- */
 /* ---------- X2 grey (8 views, NFO 418-425) ---------- */
-spriteset(spr_x2_grey, "gfx/out.png") {
-    [626, 10,  8, 19,  -3, -12]   // SE  front
-    [642, 10, 19, 15, -12,  -9]
-    [674, 10, 27, 15, -12, -11]
-    [706, 10, 19, 18,  -4, -12]
-    [738, 10,  8, 20,  -3, -12]   // NE  rear
-    [754, 10, 19, 18, -14, -11]
-    [  2,  42,  27, 15, -14, -11]
-    [ 34,  42,  19, 15,  -6, -10]
+spriteset(spr_x2_grey, "gfx/x2_grey.png") {
+    [626, 10,  8, 19,  -3, -13]
+    [642, 10, 19, 15, -14, -8]    // NE 
+    [32,   0, 32, 15, -17, -11]   // E
+    [706, 10, 19, 18,  -6, -13]   // SE
+    [738, 10,  8, 20,  -3, -12]
+    [754, 10, 19, 18, -12, -12]   // SW
+    [  0,  0, 32, 15, -14, -11]   // W
+    [ 34, 42, 19, 15,  -5, -9]    // NW
 }
 
-spriteset(spr_x2_grey_purchase, "gfx/out.png") { [] [] [] [] [] []
-    [674, 10, 27, 15, -12, -11]   // diagonal for shop icon
+spriteset(spr_x2_grey_purchase, "gfx/x2_grey.png") { 
+	[] [] 
+	[32,   0, 32, 15, -15, -11]
+	[] [] []
+    [0,  0, 32, 15, -16, -11]
     []
 }
 
 /* ---------- UB2/UB2X ---------- */
 /* plain trailer ub2 – NFO lines 432-439 */
-spriteset(spr_ub2_grey, "gfx/out.png") {
+spriteset(spr_ub2_grey, "gfx/x2_grey.png") {
     [162, 42, 8,  21, -3,  -12]  [178, 42, 21, 17, -14, -10]
     [210, 42, 32, 12, -15, -8]   [258, 42, 21, 17, -6,  -11]
     [290, 42, 8,  21, -3,  -12]  [306, 42, 21, 17, -14, -10]
@@ -581,16 +586,16 @@ spriteset(spr_ub2_grey, "gfx/out.png") {
 }
 
 /* cab-trailer ub2x – NFO lines 442-449 */
-spriteset(spr_ub2x_grey, "gfx/out.png") {
+spriteset(spr_ub2x_grey, "gfx/x2_grey.png") {
     [450, 42, 8,  20, -3,  -12]  [466, 42, 21, 17, -14, -10]
     [498, 42, 31, 12, -14, -8]   [546, 42, 21, 16, -6,  -10]
     [578, 42, 8,  21, -3,  -12]  [594, 42, 21, 16, -14, -9]
     [626, 42, 31, 12, -16, -8]   [674, 42, 21, 17, -6,  -11]
 }
 
-/* purchase icon – any frame is fine */
-spriteset(spr_ub2grey_purchase, "gfx/out.png") { [] [] [] [] [] []
-    [498, 42, 31, 12, -14, -8]
+/* purchase icon */
+spriteset(spr_ub2grey_purchase, "gfx/x2_grey.png") { [] [] [] [] [] []
+    [626, 42, 31, 12, -16, -8]
     []
 }
 
@@ -611,7 +616,7 @@ item(FEAT_TRAINS, X2_G3, 0x93) {
 		model_life: 		  VEHICLE_NEVER_EXPIRES;
         vehicle_life:         35;
         reliability_decay:    18;
-		length: 7;
+		dual_headed:		  1;
 
         /* performance */
         power:                7634 kW;
@@ -673,3 +678,53 @@ item(FEAT_TRAINS, UB2_G3, 0x94) {
     }
 }
 
+/* ================================================================
+   UB2 Cargo
+   ---------------------------------------------------------------- */
+spriteset(spr_ub2_cargo_grey, "gfx/ub2_cargo_grey.png") {
+    [162, 42,  8, 21, -3, -12]  [178, 42, 21, 17, -14, -10]
+    [210, 42, 32, 12, -15, -8]  [258, 42, 21, 17,  -6, -11]
+    [290, 42,  8, 21, -3, -12]  [306, 42, 21, 17, -14, -10]
+    [338, 42, 32, 12, -16, -8]  [386, 42, 21, 17,  -6, -11]
+}
+
+spriteset(spr_ub2_cargo_purchase, "gfx/ub2_cargo_grey.png") { [] [] [] [] [] []
+    [338, 42, 32, 12, -16, -8]
+    []
+}
+
+/* ---------- UB2 Cargo vehicle ---------- */
+item(FEAT_TRAINS, UB2_CARGO_G3, 0x95) {
+    property {
+        name:                 string(STR_UB2_CARGO_G3_NAME, 0);
+        climates_available:   ALL_CLIMATES;
+        introduction_date:    date(1994, 1, 1);
+        model_life:           VEHICLE_NEVER_EXPIRES;
+        vehicle_life:         35;
+
+        /* running and physics */
+        track_type:           _X5KV;
+        speed:                276 km/h;
+        weight:               48;
+
+        /* refit policy: allow exactly Mail, Goods, Valuables */
+        refittable_cargo_classes: bitmask(CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+        cargo_allow_refit:    [MAIL, GOOD, VALU];
+        default_cargo_type:   DEFAULT_CARGO_FIRST_REFITTABLE;
+
+        /* capacity: simple single value for all three refits */
+        cargo_capacity:       50;
+
+        /* economy */
+        cost_factor:          90;
+        running_cost_base:    RUNNING_COST_ELECTRIC;
+        running_cost_factor:  110;
+
+        /* graphics plumbing */
+        sprite_id:            SPRITE_ID_NEW_TRAIN;
+    }
+    graphics {
+        default:  spr_ub2_cargo_grey;
+        purchase: spr_ub2_cargo_purchase;
+    }
+}
