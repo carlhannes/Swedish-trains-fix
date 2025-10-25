@@ -1,10 +1,10 @@
 
 grf {
-	grfid: "CHTF";
+	grfid: "CHTX";
 	name: string(NAME);
 	desc: string(DESC);
 	min_compatible_version: 1;
-	version: 7;
+	version: 8;
 	url: string(URL);
 	param {
 		disable_x2{
@@ -19,10 +19,12 @@ traininfo_y_offset = 2;
 train_width_32_px = 1;
 
 cargotable {
-	GOOD
+	GOOD,
+	MAIL,
+	VALU
 }
 
-railtypetable{
+railtypetable {
 	_15KV: [SAAa, SAAA, SAAE, ELRL], 
 	_X5KV: [NORD, SAAA, SAAE, ELRL], 
 }
@@ -221,7 +223,7 @@ item(FEAT_TRAINS, UB2, 50) {
 		default_cargo_type: 		DEFAULT_CARGO_FIRST_REFITTABLE;
 		cargo_capacity: 			72;
 		model_life: 				VEHICLE_NEVER_EXPIRES;
-		speed:                		276 km/h;
+		speed:              		242 km/h;
 		misc_flags: 				bitmask(TRAIN_FLAG_TILT, TRAIN_FLAG_MU);
 		introduction_date:          date(1986, 1, 1);
 	}
@@ -418,8 +420,6 @@ switch(FEAT_TRAINS, SELF, sw_iore_articulated_part, extra_callback_info1) {
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 } 
 
-
-
 item(FEAT_TRAINS, iore, 19) {
 	property {
 		dual_headed: 0;  
@@ -433,33 +433,66 @@ item(FEAT_TRAINS, iore, 19) {
 	}
 }
 
-/* ---------- graphics ---------------------------------------------- */
-/* X2 sprites: NFO lines 418-425 (8 views)                            */
-spriteset(spr_x2_2005, "gfx/AI_Swedish00.png") {
-    [626, 440,   8, 19,  -3, -12]  // SE front
-    [642, 440,  19, 15, -12,  -9]
-    [674, 440,  27, 15, -12, -11]
-    [706, 440,  19, 18,  -4, -12]
-    [738, 440,   8, 20,  -3, -12]  // NE rear
-    [754, 440,  19, 18, -14, -11]
-    [  2, 472,  27, 15, -14, -11]
-    [ 34, 472,  19, 15,  -6, -10]
+/* -------------------------------------------------------- */
+/* ---------- X2 OG (8 views, NFO 418-425) ---------- */
+spriteset(spr_x2_og, "gfx/AI_Swedish00.png") {
+    [626, 440,  8, 19,  -3, -12]   // SE  front
+    [642, 440, 19, 15, -12,  -9]
+    [674, 440, 27, 15, -12, -11]
+    [706, 440, 19, 18,  -4, -12]
+    [738, 440,  8, 20,  -3, -12]   // NE  rear
+    [754, 440, 19, 18, -14, -11]
+    [  2, 472, 27, 15, -14, -11]
+    [ 34, 472, 19, 15,  -6, -10]
 }
 
-spriteset(spr_x2_2005_purchase, "gfx/AI_Swedish00.png") { [] [] [] [] [] []
-    [626, 440, 55, 15, -27, -11]  // preview
+spriteset(spr_x2_og_purchase, "gfx/AI_Swedish00.png") { [] [] [] [] [] []
+    [  2, 472, 27, 15, -14, -11]
     []
 }
 
-/* ---------- new x2 2005 ---------------------------------------- */
-item(FEAT_TRAINS, X2_2005, 0x91) {
+/* ---------- UB2/UB2X ---------- */
+/* plain trailer ub2 */
+spriteset(spr_ub2_og, "gfx/AI_Swedish00.png") {
+    [162,472,  8,21, -3,-12]  [178,472,21,17,-14,-10]
+    [210,472,32,12,-15, -8]  [258,472,21,17, -6,-11]
+    [290,472,  8,21, -3,-12]  [306,472,21,17,-14,-10]
+    [338,472,32,12,-16, -8]  [386,472,21,17, -6,-11]
+}
+
+/* cab-trailer ub2x */
+spriteset(spr_ub2x_og, "gfx/AI_Swedish00.png") {
+    [450,472,  8,20, -3,-12]  [466,472,21,17,-14,-10]
+    [498,472,31,12,-14, -8]  [546,472,21,16, -6,-10]
+    [578,472,  8,21, -3,-12]  [594,472,21,16,-14, -9]
+    [626,472,31,12,-16, -8]  [674,472,21,17, -6,-11]
+}
+
+/* purchase icon */
+spriteset(spr_ub2_purchase, "gfx/AI_Swedish00.png") { [] [] [] [] [] []
+    [626,472,31,12,-16, -8]
+    []
+}
+
+/* position_in_consist_from_end == 0  ⇒ this is the last vehicle */
+switch(FEAT_TRAINS, SELF, sw_ub2g2_graphics, position_in_consist_from_end) {
+    0:  return spr_ub2x_og;   // last coach → cab-end sprite
+    return spr_ub2_og;        // otherwise    → plain trailer
+}
+
+
+/* ================================================================
+   SJ X2 G2
+   ---------------------------------------------------------------- */
+item(FEAT_TRAINS, X2_G2, 0x91) {
     property {
-        name:                 string(STR_X2_2005_NAME, 0);
+        name:                 string(STR_X2_G2_NAME, 0);
         climates_available:   ALL_CLIMATES;
-        introduction_date:    date(2005, 1, 1);
-		model_life: 		  50;
+        introduction_date:    date(1994, 1, 1);
+		model_life: 		  VEHICLE_NEVER_EXPIRES;
         vehicle_life:         25;
         reliability_decay:    18;
+		length: 7;
 
         /* performance */
         power:                3817 kW;      // 5120 hp, +10 %
@@ -469,7 +502,7 @@ item(FEAT_TRAINS, X2_2005, 0x91) {
         air_drag_coefficient:  0;           // use default for this speed
 
         /* economy */
-        cost_factor:          130;          // +30 % over base
+        cost_factor:          115;
 		running_cost_base:    RUNNING_COST_ELECTRIC;
         running_cost_factor:  175;
 
@@ -483,30 +516,117 @@ item(FEAT_TRAINS, X2_2005, 0x91) {
     }
 
     graphics {
-        default:  spr_x2_2005;
-        purchase: spr_x2_2005_purchase;
+        default:  spr_x2_og;
+        purchase: spr_x2_og_purchase;
     }
 }
 
-/* ---------- new x2c ---------------------------------------- */
-item(FEAT_TRAINS, X2C, 0x92) {
+/* ================================================================
+   Trailer coach  SJ UB2 Gen-2  (auto-cab on tail)
+   ---------------------------------------------------------------- */
+item(FEAT_TRAINS, UB2_G2, 0x92) { 
     property {
-        name:                 string(STR_X2C_NAME, 0);
+        name:               string(STR_UB2_G2_NAME, 0);
+        climates_available: ALL_CLIMATES;
+        introduction_date:  date(1994,1,1);
+        model_life: 		VEHICLE_NEVER_EXPIRES;
+        vehicle_life:       25;
+
+        speed:              242 km/h;      // matches Gen-2 EMU
+        weight:             48;
+        cargo_capacity:     80;
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+
+        cost_factor:        90;
+        running_cost_base:  RUNNING_COST_ELECTRIC;
+        running_cost_factor:110;
+
+        sprite_id:          SPRITE_ID_NEW_TRAIN;
+        track_type:         _X5KV;
+
+        /* tilt flag keeps the animation in sync with the power cars */
+        misc_flags: bitmask(TRAIN_FLAG_TILT);
+    }
+    graphics {
+        default:  sw_ub2g2_graphics;
+        purchase: spr_ub2_purchase;
+    }
+}
+
+
+/* -------------------------------------------------------- */
+/* ---------- X2 grey (8 views, NFO 418-425) ---------- */
+spriteset(spr_x2_grey, "gfx/x2_grey.png") {
+    [626, 10,  8, 19,  -3, -13]
+    [642, 10, 19, 15, -14, -8]    // NE 
+    [32,   0, 32, 15, -17, -11]   // E
+    [706, 10, 19, 18,  -6, -13]   // SE
+    [738, 10,  8, 20,  -3, -12]
+    [754, 10, 19, 18, -12, -12]   // SW
+    [  0,  0, 32, 15, -14, -11]   // W
+    [ 34, 42, 19, 15,  -5, -9]    // NW
+}
+
+spriteset(spr_x2_grey_purchase, "gfx/x2_grey.png") { 
+	[] [] 
+	[32,   0, 32, 15, -15, -11]
+	[] [] []
+    [0,  0, 32, 15, -16, -11]
+    []
+}
+
+/* ---------- UB2/UB2X ---------- */
+/* plain trailer ub2 – NFO lines 432-439 */
+spriteset(spr_ub2_grey, "gfx/x2_grey.png") {
+    [162, 42, 8,  21, -3,  -12]  [178, 42, 21, 17, -14, -10]
+    [210, 42, 32, 12, -15, -8]   [258, 42, 21, 17, -6,  -11]
+    [290, 42, 8,  21, -3,  -12]  [306, 42, 21, 17, -14, -10]
+    [338, 42, 32, 12, -16, -8]   [386, 42, 21, 17, -6,  -11]
+}
+
+/* cab-trailer ub2x – NFO lines 442-449 */
+spriteset(spr_ub2x_grey, "gfx/x2_grey.png") {
+    [450, 42, 8,  20, -3,  -12]  [466, 42, 21, 17, -14, -10]
+    [498, 42, 31, 12, -14, -8]   [546, 42, 21, 16, -6,  -10]
+    [578, 42, 8,  21, -3,  -12]  [594, 42, 21, 16, -14, -9]
+    [626, 42, 31, 12, -16, -8]   [674, 42, 21, 17, -6,  -11]
+}
+
+/* purchase icon */
+spriteset(spr_ub2grey_purchase, "gfx/x2_grey.png") { [] [] [] [] [] []
+    [626, 42, 31, 12, -16, -8]
+    []
+}
+
+/* position_in_consist_from_end == 0  ⇒ this is the last vehicle */
+switch(FEAT_TRAINS, SELF, sw_ub2grey_graphics, position_in_consist_from_end) {
+    0:  return spr_ub2x_grey;   // last coach → cab-end sprite
+    return spr_ub2_grey;        // otherwise    → plain trailer
+}
+
+/* ================================================================
+   SJ X2 Gen3
+   ---------------------------------------------------------------- */
+item(FEAT_TRAINS, X2_G3, 0x93) {
+    property {
+        name:                 string(STR_X2_G3_NAME, 0);
         climates_available:   ALL_CLIMATES;
-        introduction_date:    date(2019, 1, 1);
-		model_life:           VEHICLE_NEVER_EXPIRES;
-        vehicle_life:         25;
+        introduction_date:    date(1994, 1, 1);
+		model_life: 		  VEHICLE_NEVER_EXPIRES;
+        vehicle_life:         35;
         reliability_decay:    18;
+		dual_headed:		  1;
 
         /* performance */
         power:                7634 kW;
-        speed:                276 km/h;    
+        speed:                276 km/h;     
         weight:               80;
-		tractive_effort_coefficient: 0.64;
+		tractive_effort_coefficient: 0.67;
         air_drag_coefficient:  0;
 
         /* economy */
-        cost_factor:          150;
+        cost_factor:          125;
 		running_cost_base:    RUNNING_COST_ELECTRIC;
         running_cost_factor:  200;
 
@@ -520,7 +640,91 @@ item(FEAT_TRAINS, X2C, 0x92) {
     }
 
     graphics {
-        default:  spr_x2_2005;
-        purchase: spr_x2_2005_purchase;
+        default:  spr_x2_grey;
+        purchase: spr_x2_grey_purchase;
+    }
+}
+
+/* ================================================================
+   Trailer coach  SJ UB2 Gen-3  (auto-cab on tail)
+   ---------------------------------------------------------------- */
+item(FEAT_TRAINS, UB2_G3, 0x94) {     
+    property {
+        name:               string(STR_UB2_G3_NAME, 0);
+        climates_available: ALL_CLIMATES;
+        introduction_date:  date(1994,1,1);
+        model_life: 		VEHICLE_NEVER_EXPIRES;
+        vehicle_life:       35;
+
+        speed:              276 km/h;      // matches Gen-2 EMU
+        weight:             48;
+        cargo_capacity:     80;
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+
+        cost_factor:        90;
+        running_cost_base:  RUNNING_COST_ELECTRIC;
+        running_cost_factor:110;
+
+        sprite_id:          SPRITE_ID_NEW_TRAIN;
+        track_type:         _X5KV;
+
+        /* tilt flag keeps the animation in sync with the power cars */
+        misc_flags: bitmask(TRAIN_FLAG_TILT);
+    }
+    graphics {
+        default:  sw_ub2grey_graphics;
+        purchase: spr_ub2grey_purchase;
+    }
+}
+
+/* ================================================================
+   UB2 Cargo
+   ---------------------------------------------------------------- */
+spriteset(spr_ub2_cargo_grey, "gfx/ub2_cargo_grey.png") {
+    [162, 42,  8, 21, -3, -12]  [178, 42, 21, 17, -14, -10]
+    [210, 42, 32, 12, -15, -8]  [258, 42, 21, 17,  -6, -11]
+    [290, 42,  8, 21, -3, -12]  [306, 42, 21, 17, -14, -10]
+    [338, 42, 32, 12, -16, -8]  [386, 42, 21, 17,  -6, -11]
+}
+
+spriteset(spr_ub2_cargo_purchase, "gfx/ub2_cargo_grey.png") { [] [] [] [] [] []
+    [338, 42, 32, 12, -16, -8]
+    []
+}
+
+/* ---------- UB2 Cargo vehicle ---------- */
+item(FEAT_TRAINS, UB2_CARGO_G3, 0x95) {
+    property {
+        name:                 string(STR_UB2_CARGO_G3_NAME, 0);
+        climates_available:   ALL_CLIMATES;
+        introduction_date:    date(1994, 1, 1);
+        model_life:           VEHICLE_NEVER_EXPIRES;
+        vehicle_life:         35;
+
+        /* running and physics */
+        track_type:           _X5KV;
+        speed:                276 km/h;
+        weight:               48;
+
+        /* refit policy: allow exactly Mail, Goods, Valuables */
+        refittable_cargo_classes: bitmask(CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+        cargo_allow_refit:    [MAIL, GOOD, VALU];
+        default_cargo_type:   DEFAULT_CARGO_FIRST_REFITTABLE;
+
+        /* capacity: simple single value for all three refits */
+        cargo_capacity:       50;
+
+        /* economy */
+        cost_factor:          90;
+        running_cost_base:    RUNNING_COST_ELECTRIC;
+        running_cost_factor:  110;
+
+        /* graphics plumbing */
+        sprite_id:            SPRITE_ID_NEW_TRAIN;
+    }
+    graphics {
+        default:  spr_ub2_cargo_grey;
+        purchase: spr_ub2_cargo_purchase;
     }
 }
