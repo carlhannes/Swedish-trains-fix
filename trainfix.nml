@@ -3,11 +3,11 @@ grf {
 	grfid: "CHTX";
 	name: string(NAME);
 	desc: string(DESC);
-	min_compatible_version: 1;
-	version: 8;
+	min_compatible_version: 2;
+	version: 2;
 	url: string(URL);
 	param {
-		disable_x2{
+		disable_x2 {
 			type: bool;
 			name: string(DISABLE_X2_NAME);
 			desc: string(DISABLE_X2_DESC);
@@ -19,8 +19,8 @@ traininfo_y_offset = 2;
 train_width_32_px = 1;
 
 cargotable {
-	GOOD,
 	MAIL,
+	GOOD,
 	VALU
 }
 
@@ -488,7 +488,7 @@ item(FEAT_TRAINS, X2_G2, 0x91) {
     property {
         name:                 string(STR_X2_G2_NAME, 0);
         climates_available:   ALL_CLIMATES;
-        introduction_date:    date(1994, 1, 1);
+        introduction_date:    date(1993, 1, 1);
 		model_life: 		  VEHICLE_NEVER_EXPIRES;
         vehicle_life:         25;
         reliability_decay:    18;
@@ -528,7 +528,7 @@ item(FEAT_TRAINS, UB2_G2, 0x92) {
     property {
         name:               string(STR_UB2_G2_NAME, 0);
         climates_available: ALL_CLIMATES;
-        introduction_date:  date(1994,1,1);
+        introduction_date:  date(1993, 1, 1);
         model_life: 		VEHICLE_NEVER_EXPIRES;
         vehicle_life:       25;
 
@@ -612,7 +612,7 @@ item(FEAT_TRAINS, X2_G3, 0x93) {
     property {
         name:                 string(STR_X2_G3_NAME, 0);
         climates_available:   ALL_CLIMATES;
-        introduction_date:    date(1994, 1, 1);
+        introduction_date:    date(1999, 1, 1);
 		model_life: 		  VEHICLE_NEVER_EXPIRES;
         vehicle_life:         35;
         reliability_decay:    18;
@@ -652,7 +652,7 @@ item(FEAT_TRAINS, UB2_G3, 0x94) {
     property {
         name:               string(STR_UB2_G3_NAME, 0);
         climates_available: ALL_CLIMATES;
-        introduction_date:  date(1994,1,1);
+        introduction_date:  date(1999, 1, 1);
         model_life: 		VEHICLE_NEVER_EXPIRES;
         vehicle_life:       35;
 
@@ -698,7 +698,7 @@ item(FEAT_TRAINS, UB2_CARGO_G3, 0x95) {
     property {
         name:                 string(STR_UB2_CARGO_G3_NAME, 0);
         climates_available:   ALL_CLIMATES;
-        introduction_date:    date(1994, 1, 1);
+        introduction_date:    date(1999, 1, 1);
         model_life:           VEHICLE_NEVER_EXPIRES;
         vehicle_life:         35;
 
