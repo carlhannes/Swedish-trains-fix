@@ -25,11 +25,11 @@ What does this add/change from the OG Swedish train fix? Well, in this alternate
 ## Use palettize.js to fix color maps
 1. Use an OG image and edit in whatever editor you want such as Pixelmator Pro
 2. Install nodejs packages with npm using `npm install`
-3. Use palettize.js like `node palettize.js -p <palette to copy over> -i <input file> -o <output file with corrected palette>` ie `node palettize.mjs -p palette_key.png -i "x2_grey.png" -o out.png`
+3. Use palettize.js like `node palettize.js -p <palette to copy over> -i <input file> -o <output file with corrected palette>` ie `node palettize.js -p palette_key.png -i "x2_grey.png" -o out.png`
 
 You can also use glob and stuff, like this:
 ```
-node palettize.mjs -p palette_key.png -i "src-img/*.png" -o gfx/
+node palettize.js -p palette_key.png -i "src-img/*.png" -o gfx/
 ```
 
 ## How to build and compile and stuff
