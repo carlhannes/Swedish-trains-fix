@@ -7,7 +7,8 @@
   "type": "module",
   "main": "palettize.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node palettize.js -p palette_key.png -i \"./src-img/*\" -o gfx/ && nmlc -c --grf swedish_trains_fixed_chw_v2.grf trainfix.nml && cp swedish_trains_fixed_chw_v2.grf ~/Documents/OpenTTD/content_download/newgrf"
   },
   "dependencies": {
     "pako": "^2.1.0",

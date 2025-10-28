@@ -576,9 +576,38 @@ spriteset(spr_x2_grey_purchase, "gfx/x2_grey.png") {
     []
 }
 
+/* -------------------------------------------------------- */
+/* ---------- X2 black (same coords as grey) ---------- */
+spriteset(spr_x2_black, "gfx/x2_black.png") {
+    [626, 10,  8, 19,  -3, -13]
+    [642, 10, 19, 15, -14, -8]    // NE 
+    [32,   0, 32, 15, -17, -11]   // E
+    [706, 10, 19, 18,  -6, -13]   // SE
+    [738, 10,  8, 20,  -3, -12]
+    [754, 10, 19, 18, -12, -12]   // SW
+    [  0,  0, 32, 15, -14, -11]   // W
+    [ 34, 42, 19, 15,  -5, -9]    // NW
+}
+
+spriteset(spr_x2_black_purchase, "gfx/x2_black.png") { 
+	[] [] 
+	[32,   0, 32, 15, -15, -11]
+	[] [] []
+    [0,  0, 32, 15, -16, -11]
+    []
+}
+
 /* ---------- UB2/UB2X ---------- */
 /* plain trailer ub2 – NFO lines 432-439 */
 spriteset(spr_ub2_grey, "gfx/x2_grey.png") {
+    [162, 42, 8,  21, -3,  -12]  [178, 42, 21, 17, -14, -10]
+    [210, 42, 32, 12, -15, -8]   [258, 42, 21, 17, -6,  -11]
+    [290, 42, 8,  21, -3,  -12]  [306, 42, 21, 17, -14, -10]
+    [338, 42, 32, 12, -16, -8]   [386, 42, 21, 17, -6,  -11]
+}
+
+/* plain trailer ub2 – black */
+spriteset(spr_ub2_black, "gfx/x2_black.png") {
     [162, 42, 8,  21, -3,  -12]  [178, 42, 21, 17, -14, -10]
     [210, 42, 32, 12, -15, -8]   [258, 42, 21, 17, -6,  -11]
     [290, 42, 8,  21, -3,  -12]  [306, 42, 21, 17, -14, -10]
@@ -593,8 +622,22 @@ spriteset(spr_ub2x_grey, "gfx/x2_grey.png") {
     [626, 42, 31, 12, -16, -8]   [674, 42, 21, 17, -6,  -11]
 }
 
+/* cab-trailer ub2x – black */
+spriteset(spr_ub2x_black, "gfx/x2_black.png") {
+    [450, 42, 8,  20, -3,  -12]  [466, 42, 21, 17, -14, -10]
+    [498, 42, 31, 12, -14, -8]   [546, 42, 21, 16, -6,  -10]
+    [578, 42, 8,  21, -3,  -12]  [594, 42, 21, 16, -14, -9]
+    [626, 42, 31, 12, -16, -8]   [674, 42, 21, 17, -6,  -11]
+}
+
 /* purchase icon */
 spriteset(spr_ub2grey_purchase, "gfx/x2_grey.png") { [] [] [] [] [] []
+    [626, 42, 31, 12, -16, -8]
+    []
+}
+
+/* purchase icon – black */
+spriteset(spr_ub2black_purchase, "gfx/x2_black.png") { [] [] [] [] [] []
     [626, 42, 31, 12, -16, -8]
     []
 }
@@ -603,6 +646,12 @@ spriteset(spr_ub2grey_purchase, "gfx/x2_grey.png") { [] [] [] [] [] []
 switch(FEAT_TRAINS, SELF, sw_ub2grey_graphics, position_in_consist_from_end) {
     0:  return spr_ub2x_grey;   // last coach → cab-end sprite
     return spr_ub2_grey;        // otherwise    → plain trailer
+}
+
+/* black variant: choose cab coach on tail */
+switch(FEAT_TRAINS, SELF, sw_ub2black_graphics, position_in_consist_from_end) {
+    0:  return spr_ub2x_black;  // last coach → cab-end sprite
+    return spr_ub2_black;       // otherwise    → plain trailer
 }
 
 /* ================================================================
@@ -719,6 +768,116 @@ item(FEAT_TRAINS, UB2_CARGO_G3, 0x95) {
         cost_factor:          90;
         running_cost_base:    RUNNING_COST_ELECTRIC;
         running_cost_factor:  110;
+
+        /* graphics plumbing */
+        sprite_id:            SPRITE_ID_NEW_TRAIN;
+    }
+    graphics {
+        default:  spr_ub2_cargo_grey;
+        purchase: spr_ub2_cargo_purchase;
+    }
+}
+
+/* ================================================================
+   SJ X2 Gen4 (black)
+   ---------------------------------------------------------------- */
+item(FEAT_TRAINS, X2_G4, 0x96) {
+    property {
+        name:                 string(STR_X2_G4_NAME, 0);
+        climates_available:   ALL_CLIMATES;
+        introduction_date:    date(2013, 1, 1);
+        model_life:           VEHICLE_NEVER_EXPIRES;
+        vehicle_life:         35;
+        reliability_decay:    18;
+        dual_headed:          1;
+
+        /* performance */
+        power:                9280 kW;      // ~9.28 MW total (split across heads)
+        speed:                320 km/h;
+        weight:               82;
+        tractive_effort_coefficient: 0.50;
+        air_drag_coefficient:  0;
+
+        /* economy */
+        cost_factor:          150;
+        running_cost_base:    RUNNING_COST_ELECTRIC;
+        running_cost_factor:  240;
+
+        /* classification */
+        engine_class:         ENGINE_CLASS_ELECTRIC;
+        sprite_id:            SPRITE_ID_NEW_TRAIN;
+        track_type:           _X5KV;
+
+        /* bells & whistles */
+        misc_flags: bitmask(TRAIN_FLAG_TILT, TRAIN_FLAG_MU);
+    }
+    graphics {
+        default:  spr_x2_black;
+        purchase: spr_x2_black_purchase;
+    }
+}
+
+/* ================================================================
+   Trailer coach  SJ UB2 Gen-4  (auto-cab on tail)
+   ---------------------------------------------------------------- */
+item(FEAT_TRAINS, UB2_G4, 0x97) {
+    property {
+        name:               string(STR_UB2_G4_NAME, 0);
+        climates_available: ALL_CLIMATES;
+        introduction_date:  date(2013, 1, 1);
+        model_life:         VEHICLE_NEVER_EXPIRES;
+        vehicle_life:       35;
+
+        speed:              320 km/h;
+        weight:             48;
+        cargo_capacity:     80;
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
+
+        cost_factor:        95;
+        running_cost_base:  RUNNING_COST_ELECTRIC;
+        running_cost_factor:115;
+
+        sprite_id:          SPRITE_ID_NEW_TRAIN;
+        track_type:         _X5KV;
+
+        /* tilt flag keeps the animation in sync with the power cars */
+        misc_flags: bitmask(TRAIN_FLAG_TILT);
+    }
+    graphics {
+        default:  sw_ub2black_graphics;
+        purchase: spr_ub2black_purchase;
+    }
+}
+
+/* ================================================================
+   UB2 Cargo Gen-4  (reuse grey cargo sprites)
+   ---------------------------------------------------------------- */
+item(FEAT_TRAINS, UB2_CARGO_G4, 0x98) {
+    property {
+        name:                 string(STR_UB2_CARGO_G4_NAME, 0);
+        climates_available:   ALL_CLIMATES;
+        introduction_date:    date(2013, 1, 1);
+        model_life:           VEHICLE_NEVER_EXPIRES;
+        vehicle_life:         35;
+
+        /* running and physics */
+        track_type:           _X5KV;
+        speed:                320 km/h;
+        weight:               48;
+
+        /* refit policy: allow exactly Mail, Goods, Valuables */
+        refittable_cargo_classes: bitmask(CC_MAIL, CC_EXPRESS, CC_ARMOURED);
+        cargo_allow_refit:    [MAIL, GOOD, VALU];
+        default_cargo_type:   DEFAULT_CARGO_FIRST_REFITTABLE;
+
+        /* capacity: simple single value for all three refits */
+        cargo_capacity:       50;
+
+        /* economy */
+        cost_factor:          95;
+        running_cost_base:    RUNNING_COST_ELECTRIC;
+        running_cost_factor:  115;
 
         /* graphics plumbing */
         sprite_id:            SPRITE_ID_NEW_TRAIN;
