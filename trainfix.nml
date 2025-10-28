@@ -622,23 +622,15 @@ spriteset(spr_ub2x_grey, "gfx/x2_grey.png") {
     [626, 42, 31, 12, -16, -8]   [674, 42, 21, 17, -6,  -11]
 }
 
-/* cab-trailer ub2x – black */
-spriteset(spr_ub2x_black, "gfx/x2_black.png") {
-    [450, 42, 8,  20, -3,  -12]  [466, 42, 21, 17, -14, -10]
-    [498, 42, 31, 12, -14, -8]   [546, 42, 21, 16, -6,  -10]
-    [578, 42, 8,  21, -3,  -12]  [594, 42, 21, 16, -14, -9]
-    [626, 42, 31, 12, -16, -8]   [674, 42, 21, 17, -6,  -11]
-}
-
 /* purchase icon */
 spriteset(spr_ub2grey_purchase, "gfx/x2_grey.png") { [] [] [] [] [] []
     [626, 42, 31, 12, -16, -8]
     []
 }
 
-/* purchase icon – black */
+/* purchase icon – black (use an existing UB2 trailer view) */
 spriteset(spr_ub2black_purchase, "gfx/x2_black.png") { [] [] [] [] [] []
-    [626, 42, 31, 12, -16, -8]
+    [338, 42, 32, 12, -16, -8]
     []
 }
 
@@ -648,11 +640,7 @@ switch(FEAT_TRAINS, SELF, sw_ub2grey_graphics, position_in_consist_from_end) {
     return spr_ub2_grey;        // otherwise    → plain trailer
 }
 
-/* black variant: choose cab coach on tail */
-switch(FEAT_TRAINS, SELF, sw_ub2black_graphics, position_in_consist_from_end) {
-    0:  return spr_ub2x_black;  // last coach → cab-end sprite
-    return spr_ub2_black;       // otherwise    → plain trailer
-}
+/* black variant has no UB2X (no auto-cab on tail); use plain UB2 */
 
 /* ================================================================
    SJ X2 Gen3
@@ -845,7 +833,7 @@ item(FEAT_TRAINS, UB2_G4, 0x97) {
         misc_flags: bitmask(TRAIN_FLAG_TILT);
     }
     graphics {
-        default:  sw_ub2black_graphics;
+        default:  spr_ub2_black;
         purchase: spr_ub2black_purchase;
     }
 }
