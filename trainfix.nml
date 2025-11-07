@@ -75,6 +75,7 @@ item(FEAT_TRAINS, Rc6, 23) {
 item(FEAT_TRAINS, Rc4, 7) {
 	property {
 		track_type: _15KV;
+        model_life: VEHICLE_NEVER_EXPIRES;
 	}
 }
 
@@ -534,7 +535,10 @@ item(FEAT_TRAINS, UB2_G2, 0x92) {
 
         speed:              242 km/h;      // matches Gen-2 EMU
         weight:             48;
+
         cargo_capacity:     80;
+        loading_speed:      20;
+
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
         default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 
@@ -548,6 +552,7 @@ item(FEAT_TRAINS, UB2_G2, 0x92) {
         /* tilt flag keeps the animation in sync with the power cars */
         misc_flags: bitmask(TRAIN_FLAG_TILT);
     }
+
     graphics {
         default:  sw_ub2g2_graphics;
         purchase: spr_ub2_purchase;
@@ -693,9 +698,12 @@ item(FEAT_TRAINS, UB2_G3, 0x94) {
         model_life: 		VEHICLE_NEVER_EXPIRES;
         vehicle_life:       35;
 
-        speed:              276 km/h;      // matches Gen-2 EMU
+        speed:              276 km/h;      // matches Gen-3 EMU
         weight:             48;
+
         cargo_capacity:     80;
+        loading_speed:      20;
+
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
         default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 
@@ -709,6 +717,7 @@ item(FEAT_TRAINS, UB2_G3, 0x94) {
         /* tilt flag keeps the animation in sync with the power cars */
         misc_flags: bitmask(TRAIN_FLAG_TILT);
     }
+    
     graphics {
         default:  sw_ub2grey_graphics;
         purchase: spr_ub2grey_purchase;
@@ -751,6 +760,7 @@ item(FEAT_TRAINS, UB2_CARGO_G3, 0x95) {
 
         /* capacity: simple single value for all three refits */
         cargo_capacity:       50;
+        loading_speed:        20;
 
         /* economy */
         cost_factor:          90;
@@ -818,7 +828,10 @@ item(FEAT_TRAINS, UB2_G4, 0x97) {
 
         speed:              320 km/h;
         weight:             48;
+
         cargo_capacity:     80;
+        loading_speed:      20;
+
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
         default_cargo_type: DEFAULT_CARGO_FIRST_REFITTABLE;
 
@@ -832,6 +845,7 @@ item(FEAT_TRAINS, UB2_G4, 0x97) {
         /* tilt flag keeps the animation in sync with the power cars */
         misc_flags: bitmask(TRAIN_FLAG_TILT);
     }
+
     graphics {
         default:  spr_ub2_black;
         purchase: spr_ub2black_purchase;
@@ -861,6 +875,7 @@ item(FEAT_TRAINS, UB2_CARGO_G4, 0x98) {
 
         /* capacity: simple single value for all three refits */
         cargo_capacity:       50;
+        loading_speed:        20;
 
         /* economy */
         cost_factor:          95;
@@ -870,6 +885,7 @@ item(FEAT_TRAINS, UB2_CARGO_G4, 0x98) {
         /* graphics plumbing */
         sprite_id:            SPRITE_ID_NEW_TRAIN;
     }
+
     graphics {
         default:  spr_ub2_cargo_grey;
         purchase: spr_ub2_cargo_purchase;
